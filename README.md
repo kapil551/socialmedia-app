@@ -41,6 +41,16 @@
 
         - https://eslint.org/docs/user-guide/getting-started
 
+        - https://www.npmjs.com/package/react-router-dom
+
+        - https://v5.reactrouter.com/web/guides/quick-start
+
+        - code splitting using React.Suspense and React.lazy?
+
+            - https://reactjs.org/docs/code-splitting.html
+        
+        - useNavigation() hook in react-router-dom?
+
 3. Firebase:
 
     - there are going to be two collections one for "photos" and other for "users".
