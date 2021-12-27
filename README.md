@@ -53,6 +53,10 @@
 
         - https://tailwindcss.com/docs/guides/create-react-app
 
+        - Context API
+
+        - custom hooks in react
+
 3. Firebase:
 
     - there are going to be two collections one for "photos" and other for "users".
