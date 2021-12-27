@@ -3,7 +3,12 @@ import { useEffect } from 'react';
 import Timeline from '../components/timeline';
 import Header from '../components/header';
 
-export default function Dashboard() {
+import useUser from '../hooks/use-user';
+import LoggedInUserContext from '../context/logged-in-user';
+
+export default function Dashboard( { user: loggedInUser } ) {
+
+    const { user, setActiveUser } = useUser(loggedInUser?.uid);
 
     useEffect(() => {
         document.title = 'Dashboard';
@@ -11,19 +16,25 @@ export default function Dashboard() {
 
     return (
 
-        <div className="bg-gray-background">
-            
-            {/* Header */}
-            <Header />
+        <LoggedInUserContext.Provider value={{ user, setActiveUser }}>
 
-            <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
+            <div className="bg-gray-background">
+                
+                {/* Header */}
+                <Header />
 
-                {/* Timeline */}
-                <Timeline />
-                {/* Sidebar */}
+                <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
+
+                    {/* Timeline */}
+                    <Timeline />
+                    {/* Sidebar */}
+
+                </div>
 
             </div>
 
-      </div>
+        </LoggedInUserContext.Provider>
     )
 }
+
+  
