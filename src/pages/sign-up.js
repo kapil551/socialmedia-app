@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import FirebaseContext from '../context/firebase';
 
+import { doesUsernameExist } from '../services/firebase';
+
 export default function SignUp() {
 
     const navigate = useNavigate();
@@ -25,11 +27,53 @@ export default function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
 
-        try {
+        const usernameExists = await doesUsernameExist(username);
 
-        } catch {
+        // user created is not duplicate
+        if(!usernameExists) {
+            
+            try {
 
+                const createdUserResult = await firebase
+                  .auth()
+                  .createUserWithEmailAndPassword(emailAddress, password);
+        
+                // authentication
+                // -> emailAddress & password & username (displayName)
+                await createdUserResult.user.updateProfile({
+                  displayName: username
+                });
+        
+                // firebase user collection (create a document)
+                await firebase
+                  .firestore()
+                  .collection('users')
+                  .add({
+                    userId: createdUserResult.user.uid,
+                    username: username.toLowerCase(),
+                    fullName,
+                    emailAddress: emailAddress.toLowerCase(),
+                    following: ['2'],
+                    followers: [],
+                    dateCreated: Date.now()
+                });
+        
+                navigate(ROUTES.DASHBOARD, { replace: true }); // navigate to dashboard page
+
+            } catch (error) {
+                  
+                setFullName('');
+                setEmailAddress('');
+                setPassword('');
+                setError(error.message);
+            }
+
+        } 
+        else {
+            setUsername('');
+            setError('That username is already taken, please try another.');
         }
+
     }
 
     return (
