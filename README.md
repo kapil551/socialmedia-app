@@ -51,6 +51,8 @@
         
         - useNavigation() hook in react-router-dom?
 
+        - https://tailwindcss.com/docs/guides/create-react-app
+
 3. Firebase:
 
     - there are going to be two collections one for "photos" and other for "users".
