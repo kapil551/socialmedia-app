@@ -40,3 +40,11 @@
         - https://www.npmjs.com/package/eslint
 
         - https://eslint.org/docs/user-guide/getting-started
+
+3. Firebase:
+
+    - there are going to be two collections one for "photos" and other for "users".
+
+    - Two cloudfirestore collections "photos" and "users".
+
+    - Add email/password authentication
