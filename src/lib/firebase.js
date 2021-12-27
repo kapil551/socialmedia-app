@@ -32,6 +32,6 @@ const firebase = Firebase.initializeApp(firebaseConfig);
 // seedDatabase(firebase);
 
 // test the firebase
-console.log("firebase", firebase);
+// console.log("firebase", firebase);
 
 export { firebase, FieldValue };

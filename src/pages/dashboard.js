@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import Timeline from '../components/timeline';
+import Header from '../components/header';
 
 export default function Dashboard() {
 
@@ -13,13 +14,13 @@ export default function Dashboard() {
         <div className="bg-gray-background">
             
             {/* Header */}
+            <Header />
+
             <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
 
                 {/* Timeline */}
                 <Timeline />
                 {/* Sidebar */}
-
-                I am a Dashboard
 
             </div>
 
